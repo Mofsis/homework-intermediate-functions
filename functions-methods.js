@@ -9,8 +9,13 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+//Vul het gewenste email adres in tussen de dubbele quotes in:
 
+const emailAdress = "";
 
+const getEmailDomain = emailAdress => emailAdress.indexOf("@");
+const domain = emailAdress.substring(getEmailDomain(emailAdress) + 1);
+console.log(domain);
 
 /* Opdracht  2 */
 // Schrijf een functie genaamd typeOfEmail, die een emailadres verwacht. De functie checkt of het emailadres een novi domein heeft (medewerker), een novi-education domein (student), of extern domein (zoals gmail of outlook)
@@ -21,6 +26,21 @@
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
 
+//ik heb hiervoor de opgeslagen variabelen van opdracht 1 gebruikt
+//Door weer boven het gewenste email adres in te vullen, zul je het gewenste resultaat krijgen
+
+function typeOfEmail() {
+    if (domain === "novi-education.nl") {
+        console.log("Student");
+    }
+    if (domain === "novi.nl") {
+        console.log("Medewerker");
+    }
+    if (domain !== "novi-education.nl" && domain !== "novi.nl") {
+        console.log("Extern");
+    }
+}
+typeOfEmail();
 
 /* Opdracht  3 */
 // Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
@@ -34,3 +54,19 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+const validationOne = emailAdress.includes("@");
+const validationTwo = emailAdress.includes(",");
+const validationThree = emailAdress.slice(-1);
+
+function checkEmailValidity() {
+    if (validationOne === true && validationTwo === false && validationThree !== ".") {
+        console.log("true");
+    }
+    else {
+        console.log("false");
+    }
+}
+checkEmailValidity();
+
+
